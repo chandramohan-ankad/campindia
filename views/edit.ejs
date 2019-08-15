@@ -3,7 +3,7 @@
     <div class="text-center">
         <h1>Edit <%=campground.name%></h1>
     </div>   
-<div style="width: 30%; margin: 0 auto;">
+<div class="row col-md-4">
 <form action="/campgrounds/<%=campground._id%>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <input type="text" name="name" value="<%=campground.name%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

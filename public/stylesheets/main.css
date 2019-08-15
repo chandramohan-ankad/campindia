@@ -1,7 +1,3 @@
-camp{
-    border: solid 1px #acacac;
-    padding: 0;
-}
 
 .figure-img{
     width: 100%;
@@ -14,18 +10,6 @@ camp{
     padding-bottom: 1rem;
 }
 
-#editcomment{
-    display: none;
-}
-
-#activities{
-    margin: 0;
-}
-#services{
-    margin: 0;
-}
-
-iframe{
-    width: 100;
-    height: 400px;
+#register{
+    margin: auto;
 }
