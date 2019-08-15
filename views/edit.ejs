@@ -1,0 +1,52 @@
+<% include partials/header%>
+<div class="container">
+    <div class="text-center">
+        <h1>Edit <%=campground.name%></h1>
+    </div>   
+<div style="width: 30%; margin: 0 auto;">
+<form action="/campgrounds/<%=campground._id%>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <input type="text" name="name" value="<%=campground.name%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <input type="text" name="price" value="<%=campground.price%>" placeholder="price / day" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <input type="text" name="activity[]" value="<%= campground.activities[0]%>" class="form-control">
+            <div class="activitywrapper"></div>
+            <input type="button" value="Add More activities" class="addActivity" id="addActivity"><br>
+            <p>Maximum 5 activities can be added</p>
+        </div>
+        <div class="form-group">
+            <input type="text" name="service[]" value="<%= campground.services[0]%>" class="form-control">
+            <div class="servicewrapper"></div>
+            <input type="button" value="Add More Services" class="addService" id="addService"><br>
+            <p>Maximum 5 Services can be added</p>
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" id="image" name="image" accept="image/*">
+        </div>
+        <div class="form-group">
+            <input type="text" name="description" value="<%=campground.description%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <input type="text" name="address" value="<%=campground.address%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="addressUrl" value="<%=campground.addressUrl%>"" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="contactNumber" value="<%=campground.contactNumber%>r" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin: 0 auto;">Submit</button>
+      </form>
+    </div>
+    <div style="width: 30%; margin: 0 auto;">
+        <hr>
+    <a class="btn btn-dark btn-lg" href="/campgrounds/<%=campground._id%>" style="width: 100%; margin: 0 auto;">Cancle</a>
+    </div>
+</div>
+
+
+<% include partials/footer%>

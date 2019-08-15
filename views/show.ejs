@@ -1,0 +1,138 @@
+<% include partials/header%>
+<div class="container">
+    <h4><%=campground.name.toUpperCase() %></h4>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-group">
+                <li class="list-group-item"><em> <strong>Owner/ service provider :</strong><br><strong><a href="/user/<%=campground.author.id%>"><%=user.firstName[0].toUpperCase() + user.firstName.slice(1) +" "+ user.lastName[0].toUpperCase() + user.lastName.slice(1)%></a></strong></em></li>
+                <li class="list-group-item"><strong>Price/Day :</strong> <%= campground.price%> Rupees <br>Check in : 12:00 pm <br>Check out : 11:00 am <br>Contact service provider for early check in</li>
+                <li class="list-group-item"><strong>Activities :</strong>
+                    <ul id="activities">
+                        <% for (let i = 0; i<campground.activities.length; i++) { %>
+                            <li><%=campground.activities[i].toLowerCase()%></li>
+                        <%}%>
+                    </ul> 
+                </li>
+                <li class="list-group-item"><strong>Services :</strong>
+                    <ul id="services">
+                        <% for (let i = 0; i<campground.services.length; i++) { %>
+                            <li><%=campground.services[i].toLowerCase()%></li>
+                        <%}%>
+                    </ul>
+                </li>
+                <li class="list-group-item"><a href="">book now</a></li>
+                <li class="list-group-item">Contact Us: <br><%=campground.contactNumber%> <br><a href="mailto:<%=user.email%>"><%=user.email%></a></li>
+                <li class="list-group-item">Address: <br><%=campground.address.address1%>, <%=campground.address.city%>, <%=campground.address.district%>, <%=campground.address.state%>, <%=campground.address.postalCode%> <br>Click<a href="<%=campground.addressUrl%>" target="_blank" rel="noopener noreferrer"> here</a> to view on google map</li>
+            </div>
+            
+        </div>
+    <div class="col-md-8 camp">
+        <figure class="=figure">
+            <img class="figure-img img-fluid rounded" src="<%=campground.image%>" alt="">
+            <figcaption class="figure-caption">
+                <p><%=campground.description%></p>
+                <p></p>
+                <% if(currentuser && campground.author.id.equals(currentuser._id) || currentuser && currentuser.isAdmin){ %>
+            <div class="d-flex flex-wrap">
+                <a class="btn btn-sm btn-info" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
+                <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="post">
+                <button class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </div>
+          <%}%>
+        
+        </figcaption>
+        </figure>
+        <% if(currentuser) { %>
+    <div class="row">
+        <div class="col-md-12 comments">
+                <div>
+                    <form action="/campgrounds/<%=campground._id%>/comment" method="POST" class="d-flex">
+                        <input type="text" name="comment[text]" placeholder="comment" class="form-control">
+                        <button type="submit" class="btn btn-sm btn-primary ml-auto">post</button>
+                    </form>
+                </div>
+                
+                <% } %>
+                <hr>
+                <div>
+                        <% var i = 0; %>
+                    <% campground.comments.forEach(function(comment){ %>
+                        
+                        <p><strong><%= comment.author.username%></strong></p>
+                        <div class="d-flex" >
+                        
+                        <p class=""><%= comment.text%></p>
+                            
+                        <p class="ml-auto" id="parent<%= +i%>">
+                            
+                        </p>
+                        </div>
+                        
+                        <div class="d-flex">
+                                <% if(currentuser && comment.author.id.equals(currentuser._id)){ %>
+                        <a class="btn btn-sm btn-info" href="/campgrounds/<%=campground._id%>/comment/<%=comment._id%>/edit">Edit</a>
+                        <%}%>
+                        <% if(currentuser && comment.author.id.equals(currentuser._id)|| currentuser && currentuser.isAdmin){ %>
+                        <form class="flex-item" action="/campgrounds/<%=campground._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                        </form>  
+                        <%}%>  
+                    </div>
+                    <script></script>
+                    <script>
+                        var created = Date.parse("<%=comment.created.toString();%>"); 
+                        daysCount();
+
+                        function daysCount() {
+                        var today = new Date();
+                        
+                        var ms = Math.round(today.getTime() - created);
+                        console.log(today.getTime());
+                        console.log(created);
+                        console.log(ms);
+                        var a = document.createElement("p");
+                        
+                        if (ms <= 59999) {
+                            count = "Just now";
+                            return document.getElementById("parent<%= +i%>").innerHTML = count;
+                        }
+                        if (ms > 59999 && ms <= 3599999) {
+                            count = Math.round(ms / 60000) + "minutes ago";
+                            return document.getElementById("parent<%= +i%>").innerHTML = count;
+                        }
+                        if (ms > 3599999 && ms <= 86399999) {
+                            count = Math.round(ms / 3600000) + "hours ago";
+                            return document.getElementById("parent<%= +i%>").innerHTML = count;
+                        }
+                        if (ms > 86399999 && ms <= 2591999999) {
+                            count = Math.round(ms / 86400000) + "days ago";
+                            return document.getElementById("parent<%= +i%>").innerHTML = count;
+                        }
+                        if (ms > 2591999999 && ms <= 31103999999) {
+                            count = Math.round(ms / 2592000000) + "months ago";
+                            return document.getElementById("parent<%= +i%>").innerHTML = count;
+                        }
+                        else {
+                            count = Math.round(ms / 31104000000) + "years ago";
+                            return document.getElementById("parent<%= +i%>").innerHTML = count;
+                        }
+                    
+                        }
+
+                        
+                    </script>
+                    <%i += 1;%>
+                    <%});%>
+                    </div>
+                    
+                </div>
+        </div>
+
+    </div>
+    
+        
+</div>   
+</div>
+</div>
+<% include partials/footer%>

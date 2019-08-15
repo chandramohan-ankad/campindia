@@ -1,0 +1,31 @@
+camp{
+    border: solid 1px #acacac;
+    padding: 0;
+}
+
+.figure-img{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.figure-caption{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#editcomment{
+    display: none;
+}
+
+#activities{
+    margin: 0;
+}
+#services{
+    margin: 0;
+}
+
+iframe{
+    width: 100;
+    height: 400px;
+}

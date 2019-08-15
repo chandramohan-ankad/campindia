@@ -1,0 +1,41 @@
+<% include partials/header%>
+
+<div class="container">
+    <h1 class="text-center">Sign Up</h1>
+    <div style="width: 30%; margin: 0 auto;">
+        <form action="/user/register" method="POST">
+            <div class="form-group">
+                <input type="text" name="firstName" placeholder="First Name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="lastName" placeholder="Last Name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" name="contactNumber" placeholder="Contact Number" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="username" placeholder="username" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="customer">Customer</label>
+                <input type="radio" id="customer" name="userType" value="customer" required>
+                <label for="owner">Owner</label>
+                <input type="radio" id="owner" name="userType" value="owner" required>
+                <p>NOTE: Selct as owner only if you area service provider </p>
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<% include partials/footer%>
