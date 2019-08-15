@@ -19,7 +19,16 @@ var resetRoutes = require("./routes/reset");
 
 
 
-mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true }); 
+mongoose.connect("mongodb+srv://testing:process.env.DBPW@yelpcamp-3yrwn.mongodb.net/test?retryWrites=true&w=majority", { 
+    useNewUrlParser: true,
+    useCreateIndex: true 
+}).then(() => {
+    console.log("Data Base connected")
+}).catch(err =>{
+    res.send("Server not Found");
+});
+
+
 app.use(bodyparser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -63,6 +72,6 @@ app.get("/", function(req, res){
 
 
 //port configuration//
-app.listen(3000, function(){
-    console.log("Yelp camp server started");
-});
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
