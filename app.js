@@ -25,7 +25,10 @@ mongoose.connect("mongodb+srv://testing:process.env.DBPW@yelpcamp-3yrwn.mongodb.
 }).then(() => {
     console.log("Data Base connected")
 }).catch(err =>{
-    res.send("Server not Found");
+    if (err){
+        res.send("Server not Found");
+    }
+    
 });
 
 
