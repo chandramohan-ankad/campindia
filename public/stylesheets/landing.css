@@ -5,7 +5,11 @@ body {
     z-index: 1;
     position: relative;
     text-align: center;
-    padding-top: 40vh;
+    padding-top: 30vh;
+  }
+
+  #search{
+    margin: auto;
   }
 
   #landing-header h1 {
