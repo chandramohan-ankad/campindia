@@ -43,7 +43,7 @@ router.post('/forgot', function(req, res, next) {
         host: "smtp.gmail.com",
         auth: {
           user: 'yelpcampservice96@gmail.com',
-          pass: process.env.GMAILPW
+          pass: "yelpc@mp96"
         }
       });
       var mailOptions = {

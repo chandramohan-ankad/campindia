@@ -34,8 +34,8 @@ var upload = multer({storage:storage, fileFilter:imageFilter});
 //Cloudinary configuration//
 cloudinary.config({
     cloud_name: "yelpcampimag",
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET
+    api_key: "858472445496759",
+    api_secret: "YT6C31eIlogpIXVGN8y7hQBYtR4"
 });
 
 
