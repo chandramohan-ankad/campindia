@@ -19,7 +19,7 @@ var resetRoutes = require("./routes/reset");
 
 
 
-mongoose.connect("mongodb+srv://testing:process.env.DBPW@yelpcamp-3yrwn.mongodb.net/test?retryWrites=true&w=majority", { 
+mongoose.connect("mongodb+srv://testing:xCJGiGTBrvzCt62u@yelpcamp-3yrwn.mongodb.net/test?retryWrites=true&w=majority", { 
     useNewUrlParser: true,
     useCreateIndex: true 
 }).then(() => {
