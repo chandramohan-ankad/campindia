@@ -1,7 +1,7 @@
 <% include partials/header%>
 <div class="container">
     <h1 class="text-center">Edit Profile</h1>
-    <div style="width: 30%; margin: 0 auto;">
+    <div class="col-md-4" id="form">
         <form action="/user/<%=user._id%>?_method=PUT" method="POST">
             <div class="form-group">
                 <input type="text" name="firstName" value="<%=user.firstName%>" class="form-control">
@@ -13,11 +13,12 @@
                 <input type="email" name="email" value="<%=user.email%>" class="form-control">
             </div>
             <div class="form-group">
-                <input type="tel" name="contactNumber" pattern="[0-9]{10}" title="10 digit mobile number required" value="<%=user.contactNumber%>" class="form-control" required>
+                <input type="tel" name="contactNumber" pattern="[0-9]{10}" title="10 digit mobile number required" value="<%=user.contactNumber%>" class="form-control">
             </div>
-            <button>Submit</button>
+            <button class="btn btn-dark">Submit</button>
         </form>
-        <a href="/user/<%=user._id%>">Cancle</a>
+        <hr>
+        <a class="btn btn-info" href="/user/<%=user._id%>">Cancle</a>
     </div>
 </div>
 

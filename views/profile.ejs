@@ -1,42 +1,60 @@
 <% include partials/header%>
 <div class="container">
-        <h4><%= user.firstName[0].toUpperCase() + user.firstName.slice(1) +" "+ user.lastName[0].toUpperCase() + user.lastName.slice(1)%></h4>
+    <div class="d-flex flex-wrap">
+            <h4><%= user.firstName[0].toUpperCase() + user.firstName.slice(1) +" "+ user.lastName[0].toUpperCase() + user.lastName.slice(1)%></h4>
+            <%if((currentuser && user._id.equals(currentuser._id)) || currentuser && currentuser.isAdmin){%>
+            <a class="ml-auto" href="/user/<%=user._id%>/edit"><span style="color: black; font-size: 1.5rem;"><i class="fas fa-user-edit"></i></span></i></a>
+            <%}%>
+    </div>
+        
+        
         <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-12">
             <div class="list-group">
-                <li class="list-group-item">Contact Us: <br><%=user.contactNumber%> <br><a href="mailto:<%= user.email%>"><%= user.email%></a></li>
-                <li class="list-group-item">Info 2</li>
-                <li class="list-group-item">Info 3</li>
-                <li class="list-group-item">Info 4</li>
+                <li class="list-group-item">About</li>
+                <li class="list-group-item"><i class="fas fa-award"></i> Awardes and certifications</li>
+                <li class="list-group-item">Contact Us: <br><i class="fas fa-phone-square"></i> <%=user.contactNumber%> <br><i class="fas fa-envelope"></i> <a href="mailto:<%= user.email%>"><%= user.email%></a></li>
+                <li class="list-group-item"><i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></li>
             </div>
             <%if((currentuser && user._id.equals(currentuser._id)) || currentuser && currentuser.isAdmin){%>
             <div>
-                <a href="/user/<%=user._id%>/edit">Edit Profile</a>
-            </div>
-            <div>
                 <form action="/user/<%=user._id%>?_method=DELETE" method="POST">
-                    <button>delete</button>
+                    <button style="border: none; background-color: white; font-size: 1.5rem"><i class="fas fa-trash"></i></button>
                 </form>
             </div>
             <%}%>
         </div>
-        <div class="col-md-9 camp">
-                <h4 class="text-center">Campgrounds</h4>
-                <div class="row">
-                        <% campgrounds.forEach(function(campground){ %>
-                        <a href="/campgrounds/<%=campground._id%>">
-                        <div class="col-md-4">
-                            <div class="thumbnail text-center" style="width: inherit;">
-                                <img src="<%= campground.image %>" alt="Campground image"style="width: 100%;">
-                                <div class="caption">
-                                    <p><%= campground.name.toUpperCase() %>, <%= campground.address.district %>, <%= campground.address.state%></p>
-                                </div></a>
+        
+        <div class="col-md-12 camp">
+            <% if((currentuser && currentuser.userType === "owner") || currentuser && currentuser.isAdmin){ %> 
+                <div id="newCamp">
+                    <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
+                </div>
+            <% } %>
+            <hr>
+            <% if(currentuser && currentuser.userType === "owner"){ %>
+                    <h4 class="text-center">Owned / Associated Campgrounds</h4>
+            <% } %>   
+            <% if(currentuser && currentuser.isAdmin){ %>
+                <h4 class="text-center">Camp India associated Campgrounds</h4>
+            <% } %>
+                    <div class="row" style="display:flex; flex-wrap: wrap;">
+                            <% campgrounds.forEach(function(campground){ %>
+                            <div class="col-md-6 col-lg-4">
+                                <a href="/campgrounds/<%=campground._id%>">
+                                <div class="thumbnail text-center" style="width: inherit;">
+                                    <img src="<%= campground.image %>" alt="Campground image"style="width: 100%;">
+                                    <div class="caption">
+                                        <p><%= campground.name.toUpperCase() %> <%= campground.address.district%>, <%= campground.address.state%></p>
+                                    </div>
+                                </div>
+                                </a>
                             </div>
-                        </div>
                             <% }) %>
-                    </div>
-
+                        </div>
+                        
         </div>
-
+                            
+    </div>
 </div>
 <% include partials/footer%>

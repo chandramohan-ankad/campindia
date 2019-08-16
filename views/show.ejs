@@ -2,19 +2,24 @@
 <div class="container">
     <div class="row" style="display:flex; flex-wrap: wrap;">
         <div class="col-md-12">
+            <div class="d-flex flex-wrap">
             <h4><%=campground.name.toUpperCase() %></h4>
+            <% if(currentuser && campground.author.id.equals(currentuser._id) || currentuser && currentuser.isAdmin){ %>
+                <a class="ml-auto" href="/campgrounds/<%=campground._id%>/edit"><span style="color:black; font-size: 1.5rem"><i class="fas fa-edit"></i></span></a>
+            <%}%>
+        </div>
         </div>
         <div class="col-md-8 camp ">
             <figure class="=figure">
                 <img class="figure-img img-fluid rounded" src="<%=campground.image%>" alt="">
                 <figcaption class="figure-caption">
+                    <p ><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p>
                     <p><%=campground.description%></p>
-                    <p></p>
                     <% if(currentuser && campground.author.id.equals(currentuser._id) || currentuser && currentuser.isAdmin){ %>
                     <div class="d-flex flex-wrap">
-                        <a class="btn btn-sm btn-info" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
+                        
                         <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="post">
-                            <button class="btn btn-sm btn-danger">Delete</button>
+                            <button style="border: none; background-color:white; font-size: 1.5rem"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </div>
                     <%}%>
@@ -24,7 +29,8 @@
         <div class="col-md-4">
             <div class="list-group">
                 <li class="list-group-item"><em> <strong>Owner/ service provider :</strong><br><strong><a href="/user/<%=campground.author.id%>"><%=user.firstName[0].toUpperCase() + user.firstName.slice(1) +" "+ user.lastName[0].toUpperCase() + user.lastName.slice(1)%></a></strong></em></li>
-                <li class="list-group-item"><strong>Price/Day :</strong> <%= campground.price%> Rupees <br>Check in : 12:00 pm <br>Check out : 11:00 am <br>Contact service provider for early check in</li>
+                <li class="list-group-item"><strong>Address:</strong><br><%=campground.address.address1%>, <%=campground.address.city%>, <%=campground.address.district%>, <%=campground.address.state%>, <%=campground.address.postalCode%> <br>Click<a href="<%=campground.addressUrl%>" target="_blank" rel="noopener noreferrer"> here</a> to view on <i class="fas fa-map-marked-alt"></i></li>
+                <li class="list-group-item"><strong>Price/Day : <%= campground.price%></strong> <span style="font-size: inherit"><i class="fas fa-rupee-sign"></i></span>  <br>Check in : 12:00 pm <br>Check out : 11:00 am <br>Contact service provider for early check in</li>
                 <li class="list-group-item"><strong>Activities :</strong>
                     <ul id="activities">
                         <% for (let i = 0; i<campground.activities.length; i++) { %>
@@ -39,9 +45,9 @@
                         <%}%>
                     </ul>
                 </li>
-                <li class="list-group-item"><a href="">book now</a></li>
-                <li class="list-group-item">Contact Us: <br><%=campground.contactNumber%> <br><a href="mailto:<%=user.email%>"><%=user.email%></a></li>
-                <li class="list-group-item">Address: <br><%=campground.address.address1%>, <%=campground.address.city%>, <%=campground.address.district%>, <%=campground.address.state%>, <%=campground.address.postalCode%> <br>Click<a href="<%=campground.addressUrl%>" target="_blank" rel="noopener noreferrer"> here</a> to view on google map</li>
+                <li class="list-group-item"><a href=""><strong>book now</strong></a></li>
+                <li class="list-group-item"><strong>Contact Us:</strong><br><%=campground.contactNumber%> <br><a href="mailto:<%=user.email%>"><%=user.email%></a></li>
+                
             </div>   
         </div>
         <div class="col-md-8 comments">
@@ -49,28 +55,31 @@
             <div>
                 <form action="/campgrounds/<%=campground._id%>/comment" method="POST" class="d-flex">
                     <input type="text" name="comment[text]" placeholder="comment" class="form-control">
-                    <button type="submit" class="btn btn-sm btn-primary ml-auto">post</button>
+                    <button type="submit" class="btn btn-sm btn-dark ml-auto">post</button>
                 </form>
             </div>
             <hr>
             <div class="col-md-12">
                 <% var i = 0; %>
                 <% campground.comments.forEach(function(comment){ %>
-                    <p><strong><%= comment.author.username%></strong></p>
-                    <div class="d-flex justify-content-between" >
+                    
+                        <p><strong><%= comment.author.username%></strong></p>
+                          
+                    <div class="d-flex" >
                         <p class=""><%= comment.text%></p>    
-                        <p class="" id="parent<%= +i%>"></p>
+                        <p class="ml-auto" id="parent<%= +i%>"></p>
+                        <div class="d-flex">
+                                <% if(currentuser && comment.author.id.equals(currentuser._id)){ %>
+                                    <a class="ml-auto" href="/campgrounds/<%=campground._id%>/comment/<%=comment._id%>/edit"><span style="color: black; padding-left: 0.5rem"> <i class="fas fa-pen"></i></span></a>
+                                    <%}%>
+                                    <% if(currentuser && comment.author.id.equals(currentuser._id)|| currentuser && currentuser.isAdmin){ %>
+                                    <form class="flex-item" action="/campgrounds/<%=campground._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST">
+                                        <button class="ml-auto" style="border: none; background-color:white; padding-left: 0.5rem"> <i class="fas fa-trash-alt"></i></button>
+                                    </form>  
+                                    <%}%>
+                        </div>
                     </div>
-                    <div class="d-flex">
-                        <% if(currentuser && comment.author.id.equals(currentuser._id)){ %>
-                        <a class="btn btn-sm btn-info" href="/campgrounds/<%=campground._id%>/comment/<%=comment._id%>/edit">Edit</a>
-                        <%}%>
-                        <% if(currentuser && comment.author.id.equals(currentuser._id)|| currentuser && currentuser.isAdmin){ %>
-                        <form class="flex-item" action="/campgrounds/<%=campground._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST">
-                            <button class="btn btn-sm btn-danger">Delete</button>
-                        </form>  
-                        <%}%>  
-                    </div>
+                    
                     <script>
                         var created = Date.parse("<%=comment.created.toString();%>"); 
                         daysCount();

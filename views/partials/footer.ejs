@@ -4,14 +4,15 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 <script>
+    var max = 4;
+    var x = 0;
+    var y =0;
     $(document).ready(function(){
-        var max = 5;
+        
         var activitywrapper = (".activitywrapper");
         var servicewrapper = (".servicewrapper");
         var addActivity = (".addActivity");
         var addService = (".addService");
-        var x = 0;
-        var x = 0;
         
         $(addActivity).click(function(e){
             e.preventDefault();
@@ -28,7 +29,7 @@
         });
         $(addService).click(function(e){
             e.preventDefault();
-            if(x<max){
+            if(y<max){
                 $(servicewrapper).append('<div><input type="text" name="service[]" placeholder="service" class="form-control"><a href="#" class="remove">Remove</a></div>');
                 y++;
             }

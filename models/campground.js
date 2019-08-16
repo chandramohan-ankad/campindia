@@ -10,11 +10,11 @@ var campgroundSchema = new mongoose.Schema({
     services:[{type:String}],
     address: 
         {
-        address1:{type:String, required:true},
-        city:{type:String, required:true},
-        district:{type:String, required:true},
-        state:{type:String, required:true},
-        postalCode:{type:String, required:true}
+        address1: String,
+        city: String,
+        district: String,
+        state: String,
+        postalCode: String
         },
     addressUrl: String,
     contactNumber: String,

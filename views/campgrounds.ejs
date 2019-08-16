@@ -1,18 +1,16 @@
 <% include partials/header%>
 <div class="container">
-    <div class="jumbotron">
-        <div class="">
-            <h1>Welcome to Yelpcamp</h1>
-            <p>View our handpicked Campgrounds from all over India</p>
-           <% if((currentuser && currentuser.userType === "owner") || currentuser && currentuser.isAdmin){ %>
-                <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
-            <% } %>
+    <div class="jumbotron" id="jumbotron">
+        <div>
+            <h1><i class="fas fa-campground"></i> </h1>
+            <h1>Welcome to Camp India</h1>
+            <h5>View our handpicked Campgrounds from all over the India </h5>
             <p>
                 <form action="/campgrounds" method="GET" class="form-inline">
-                    <div class="form-group">
+                    <div class="form-group" id="search">
                         <input type="text" name="search[city]" placeholder="search with City /District..." class="form-control">
                         <input type="text" name="search[state]" placeholder="search with State..." class="form-control">
-                        <input type="submit" value="Search" class="btn btn-primary">
+                        <button id="search-btn" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
                     </div>
                 </form>
             </p>

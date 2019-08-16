@@ -1,7 +1,7 @@
 <% include partials/header%>
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4" id="login">
             <form action="/user/login" method="POST">
                 <legend>User Login</legend>
                 <div class="form-group">
@@ -10,7 +10,7 @@
                 <div class="form-group">
                     <input type="password" name="password" placeholder="password" class="form-control">
                 </div>
-                <button class="btn btn-primary">login</button>
+                <button class="btn btn-dark">login</button>
             </form>
             <a href="/forgot">Forgot Password</a>
         </div>

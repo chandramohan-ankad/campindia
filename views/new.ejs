@@ -1,49 +1,57 @@
 <% include partials/header%>
 
 <div class="container">
-    <div class="text-center">
-        <h1>Create new campgrounds</h1>
-    </div>   
-<div class="row col-md-4">
-<form action="/campgrounds" method="POST" enctype="multipart/form-data">
+    <div class="row">   
+        <div class="col-md-8" id="form">
+            <form action="/campgrounds" method="POST" enctype="multipart/form-data">
+                <legend style="text-align: center">Create new campgrounds</legend>
+                <div class="form-group">
+                    <input type="text" name="campground[name]" placeholder="Campground Name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="campground[price]" placeholder="price / day" class="form-control" required>
+                </div>
         <div class="form-group">
-          <input type="text" name="campground[name]" placeholder="name" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <input type="text" name="campground[price]" placeholder="price / day" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <input type="text" name="activity[]" placeholder="activity" class="form-control">
+            <input type="text" name="activity[]" placeholder="Additional Activity" class="form-control">
             <div class="activitywrapper"></div>
-            <input type="button" value="Add More activities" class="addActivity" id="addActivity"><br>
+            <input class="btn btn-secondary addActivity" type="button" value="Add More activities"  id="addActivity"><br>
             <p>Maximum 5 activities can be added</p>
         </div>
         <div class="form-group">
-            <input type="text" name="service[]" placeholder="Service" class="form-control">
+            <input type="text" name="service[]" placeholder="Additional Service" class="form-control">
             <div class="servicewrapper"></div>
-            <input type="button" value="Add More Services" class="addService" id="addService"><br>
+            <input class="btn btn-secondary addService" type="button" value="Add More Services"  id="addService"><br>
             <p>Maximum 5 Services can be added</p>
         </div>
-        <div class="form-group">   
-            <label for="image">Image</label>
-            <input type="file" id="image" name="image" accept="image/*" required class="form-control" required>
+        <div class="form-group">
+            <div class="custom-file">
+            <input type="file" id="image" name="image" accept="image/*" class="custom-file-input" id="inputGroupFile02" required>
+            <label class="custom-file-label" for="inputGroupFile02">Choose image</label>
+            </div>
         </div>
         <div class="form-group">
-            <textarea name="campground[description]" placeholder="description" class="form-control" required id="" cols="30" rows="10"></textarea>
+            <textarea name="campground[description]" placeholder="Description" class="form-control" required id="" cols="30" rows="5"></textarea>
         </div>
         <div class="form-group">
-            Address :
             <div class="form-group">
-             Select State :   
-            <select name="address[state]" id="state" size="1">
+             <div class="input-group">
+             <div class="input-group-prepend">
+             <label class="input-group-text" for="state">Select State</label>
+            </div>
+            <select class="custom-select" name="address[state]" id="state" size="1">
                 <option value="" selected="selected">Select State</option>
             </select>
             </div>
+            </div>
             <div class="form-group">
-            Select District :
-            <select name="address[district]" id="district" size="1"> 
+            <div class="input-group">
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="district">Select District</label>
+            </div>
+            <select class="custom-select" name="address[district]" id="district" size="1"> 
                 <option value="" selected="selected">Please select State first</option>
             </select>
+            </div>
             </div>
             <input type="text" name="address[address1]" placeholder="Address1" class="form-control" required>
             <input type="text" name="address[city]" placeholder="City" class="form-control" required>
@@ -55,13 +63,14 @@
         <div class="form-group">
             <input type="text" name="campground[contactNumber]" placeholder="Contact Number" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin: 0 auto;">Submit</button>
+        <button type="submit" class="btn btn-dark btn-lg" style="width: 100%; margin: 0 auto;">Submit</button>
       </form>
+    
+            <hr>
+        <a class="btn btn-info btn-lg" href="/campgrounds">Cancle</a>
     </div>
-    <div style="width: 30%; margin: 0 auto;">
-        <hr>
-    <a class="btn btn-dark btn-lg" href="/campgrounds">Back</a>
-    </div>
+</div>
+    
 </div>
 
 <% include partials/footer%>

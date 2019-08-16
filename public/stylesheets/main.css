@@ -1,4 +1,21 @@
-
+#jumbotron{
+    text-align: center;
+}
+@media only screen and (min-width: 600px){
+    #search-btn{
+      margin-left: 1rem;
+    }
+  }
+  
+  @media only screen and (max-width: 500px){
+    #search-btn{
+      margin: 1rem;
+    }
+  }
+  
+    #search{
+      margin: auto;
+    }
 .figure-img{
     width: 100%;
     margin: 0;
@@ -13,3 +30,20 @@
 #register{
     margin: auto;
 }
+
+#login{
+    margin: auto;
+}
+#form{
+    margin: auto;
+}
+/* profilepage */
+
+    #newCamp{
+        text-align: center;
+        border-top: solid 1px lightgrey;
+        border-width: 100%;
+        padding: 1rem;
+        padding-bottom: 0;
+        margin: 1rem;
+    }

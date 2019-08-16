@@ -176,7 +176,7 @@ router.put("/:id/edit", middleware.checkCampgroundWonership, upload.single('imag
             }
             campground.name = req.body.name;
             campground.description = req.body.description;
-            campground.address = req.body.address;
+            campground.address.address1 = req.body.address1
             campground.addressUrl = req.body.addressUrl;
             campground.contactNumber = req.body.contactNumber;
             campground.activities = [];

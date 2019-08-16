@@ -1,51 +1,55 @@
 <% include partials/header%>
-<div class="container">
-    <div class="text-center">
-        <h1>Edit <%=campground.name%></h1>
-    </div>   
-<div class="row col-md-4">
+<div class="container">  
+<div class="row">
+    <div class="col-md-8" id="form">
 <form action="/campgrounds/<%=campground._id%>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
+    <legend style="text-align: center">Edit <%=campground.name%></legend>
         <div class="form-group">
-          <input type="text" name="name" value="<%=campground.name%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" name="name" value="<%=campground.name%>" class="form-control" required>
         </div>
         <div class="form-group">
-            <input type="text" name="price" value="<%=campground.price%>" placeholder="price / day" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" name="price" value="<%=campground.price%>" placeholder="price / day" class="form-control" required>
         </div>
+        <p style="color: red">Please readd the activities below if earlier updated activities are morethan one</p>
         <div class="form-group">
             <input type="text" name="activity[]" value="<%= campground.activities[0]%>" class="form-control">
             <div class="activitywrapper"></div>
-            <input type="button" value="Add More activities" class="addActivity" id="addActivity"><br>
+            <input class="btn btn-secondary addActivity" type="button" value="Add More activities" id="addActivity"><br>
             <p>Maximum 5 activities can be added</p>
         </div>
+        <p style="color: red">Please readd the servicess below if earlier updated services are morethan one</p>
         <div class="form-group">
             <input type="text" name="service[]" value="<%= campground.services[0]%>" class="form-control">
             <div class="servicewrapper"></div>
-            <input type="button" value="Add More Services" class="addService" id="addService"><br>
+            <input class="btn btn-secondary addService" type="button" value="Add More Services" id="addService"><br>
             <p>Maximum 5 Services can be added</p>
         </div>
         <div class="form-group">
-            <label for="image">Image</label>
-            <input type="file" id="image" name="image" accept="image/*">
+            <div class="custom-file">
+            <input type="file" id="image" name="image" accept="image/*" class="custom-file-input" id="inputGroupFile02">
+            <label class="custom-file-label" for="inputGroupFile02">Choose New image (Optional)</label>
+            </div>
         </div>
         <div class="form-group">
-            <input type="text" name="description" value="<%=campground.description%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <textarea name="description" class="form-control" cols="30" rows="5" required><%=campground.description%></textarea>
         </div>
         <div class="form-group">
-            <input type="text" name="address" value="<%=campground.address%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <input type="text" name="address1" value="<%=campground.address.address1%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <input type="text" name="city" value="<%=campground.address.city%>" class="form-control" required>
+            <input type="text" name="postalCode" value="<%=campground.address.postalCode%>" pattern="[0-9]{6}" title="Six digit postal code" class="form-control" required>
         </div>
         <div class="form-group">
-            <input type="text" name="addressUrl" value="<%=campground.addressUrl%>"" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <input type="text" name="addressUrl" value="<%=campground.addressUrl%>" class="form-control" required>
         </div>
         <div class="form-group">
-            <input type="text" name="contactNumber" value="<%=campground.contactNumber%>r" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <input type="text" name="contactNumber" value="<%=campground.contactNumber%>" class="form-control" required>
         </div>
         <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin: 0 auto;">Submit</button>
       </form>
-    </div>
-    <div style="width: 30%; margin: 0 auto;">
         <hr>
-    <a class="btn btn-dark btn-lg" href="/campgrounds/<%=campground._id%>" style="width: 100%; margin: 0 auto;">Cancle</a>
+    <a class="btn btn-dark btn-lg" href="/campgrounds/<%=campground._id%>">Cancle</a>
     </div>
+</div>
 </div>
 
 
