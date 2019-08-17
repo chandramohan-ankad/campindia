@@ -1,14 +1,24 @@
 body{
-  margin-top: 4rem;
-}
-nav{
-  background-color: #110e0e;
+  margin-top: 3.4rem;
+  color: #292930;
 }
 
 
 #jumbotron{
+  bottom: 0;
+  background-image: url("/slideshow/jumbotron.jpg");
+  background-attachment: fixed;
+  background-position: bottom;
+  background-size: cover;
     text-align: center;
-    padding: .5rem;
+    padding: 1rem;
+    color: white;
+    text-shadow: 3px 3px rgb(0, 0, 0);
+    height: 80vh;
+}
+
+#jumbotrontext{
+  margin-top: 7rem;
 }
 @media only screen and (min-width: 600px){
     #search-btn{
@@ -56,6 +66,10 @@ nav{
         padding-bottom: 0;
         margin: 1rem;
     }
+
+#card{
+margin-bottom: 2rem;
+}
 
 #card-body{
   padding-top: 0.5rem;
