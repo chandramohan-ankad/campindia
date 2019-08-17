@@ -1,33 +1,29 @@
 body {
-    background-color: #000;
+    background-color: #000000;
   }
   #landing-header {
+    background-color: #fff;
     z-index: 1;
     position: relative;
     text-align: center;
-    padding-top: 35vh;
+    margin-top: 40vh;
+    padding: 0.5rem;
+    opacity: .8;
   }
 
-  
-@media only screen and (min-width: 600px){
-  #search-btn{
-    margin-left: 1rem;
+  #about{
+    text-align: left;
+    padding-top: 2vw;
   }
-}
+
 
 @media only screen and (max-width: 500px){
-  #search-btn{
-    margin: 1rem;
+  #landing-header{
+   margin-top: 70vh;
   }
 }
 
-  #search{
-    margin: auto;
-  }
 
-  #landing-header h1 {
-    color: #fff;
-  }
   h3{
     color: #fff;
   }
@@ -99,3 +95,4 @@ body {
 .no-cssanimations .slideshow li {
 	opacity: 1;
 }
+

@@ -28,8 +28,8 @@
         </div>
         <div class="col-md-4">
             <div class="list-group">
-                <li class="list-group-item"><em> <strong>Owner/ service provider :</strong><br><strong><a href="/user/<%=campground.author.id%>"><%=user.firstName[0].toUpperCase() + user.firstName.slice(1) +" "+ user.lastName[0].toUpperCase() + user.lastName.slice(1)%></a></strong></em></li>
-                <li class="list-group-item"><strong>Address:</strong><br><%=campground.address.address1%>, <%=campground.address.city%>, <%=campground.address.district%>, <%=campground.address.state%>, <%=campground.address.postalCode%> <br>Click<a href="<%=campground.addressUrl%>" target="_blank" rel="noopener noreferrer"> here</a> to view on <i class="fas fa-map-marked-alt"></i></li>
+                <li class="list-group-item"><em> <strong>Owner/ service provider :</strong><br><strong><a style="text-decoration: none" href="/user/<%=campground.author.id%>"><%=user.firstName[0].toUpperCase() + user.firstName.slice(1) +" "+ user.lastName[0].toUpperCase() + user.lastName.slice(1)%></a></strong></em></li>
+                <li class="list-group-item"><strong>Address:</strong><br><%=campground.address.address1%>, <%=campground.address.city%>, <%=campground.address.district%>, <%=campground.address.state%>, <%=campground.address.postalCode%> <br>Click<a style="text-decoration: none" href="<%=campground.addressUrl%>" target="_blank" rel="noopener noreferrer"> here</a> to view on <i class="fas fa-map-marked-alt"></i></li>
                 <li class="list-group-item"><strong>Price/Day : <%= campground.price%></strong> <span style="font-size: inherit"><i class="fas fa-rupee-sign"></i></span>  <br>Check in : 12:00 pm <br>Check out : 11:00 am <br>Contact service provider for early check in</li>
                 <li class="list-group-item"><strong>Activities :</strong>
                     <ul id="activities">
@@ -45,8 +45,8 @@
                         <%}%>
                     </ul>
                 </li>
-                <li class="list-group-item"><a href=""><strong>book now</strong></a></li>
-                <li class="list-group-item"><strong>Contact Us:</strong><br><%=campground.contactNumber%> <br><a href="mailto:<%=user.email%>"><%=user.email%></a></li>
+                <li class="list-group-item"><a style="text-decoration: none" href=""><strong>book now</strong></a></li>
+                <li class="list-group-item"><strong>Contact Us:</strong><br><%=campground.contactNumber%> <br><a style="text-decoration: none" href="mailto:<%=user.email%>"><%=user.email%></a></li>
                 
             </div>   
         </div>

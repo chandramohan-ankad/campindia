@@ -3,16 +3,18 @@
     <div class="row">
         <div class="col-md-4" id="login">
             <form action="/user/login" method="POST">
-                <legend>User Login</legend>
+                <legend style="text-align: center">User Login</legend>
                 <div class="form-group">
                     <input type="text" name="username" placeholder="username" class="form-control">
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" placeholder="password" class="form-control">
+                    <a style="text-decoration: none" href="/forgot">Forgot Password?</a>
                 </div>
-                <button class="btn btn-dark">login</button>
+                <button class="btn btn-dark btn-block">login</button>
             </form>
-            <a href="/forgot">Forgot Password</a>
+            <br>
+            <p>Need an account? <a style="text-decoration: none" href="/user/register">Sing up</a></p>
         </div>
     </div>
 </div>

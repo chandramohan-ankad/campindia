@@ -10,7 +10,7 @@
                     <div class="form-group" id="search">
                         <input type="text" name="search[city]" placeholder="search with City /District..." class="form-control">
                         <input type="text" name="search[state]" placeholder="search with State..." class="form-control">
-                        <button id="search-btn" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+                        <button id="search-btn" class="btn btn-dark"><i class="fas fa-search"></i> Search</button>
                     </div>
                 </form>
             </p>
@@ -27,12 +27,16 @@
 <div class="container">
     <div class="row" style="display:flex; flex-wrap: wrap;">
         <% campgrounds.forEach(function(campground){ %>
-        <div class="col-md-3 col-sm-6">
-            <a href="/campgrounds/<%=campground._id%>">
-            <div class="thumbnail text-center" style="width: inherit;">
-                <img src="<%= campground.image %>" alt="Campground image"style="width: 100%;">
-                <div class="caption">
-                    <p><%= campground.name.toUpperCase() %> <%= campground.address.district%>, <%= campground.address.state%></p>
+        <div class="col-md-4 col-sm-6">
+            <a style="text-decoration:none; color:black" href="/campgrounds/<%=campground._id%>">
+            <div class="card" style="width: inherit;">
+                <img class="card-img-top" src="<%= campground.image %>" alt="Campground image">
+                <div class="card-body" id="card-body">
+                    <h6 class="noHover"><%= campground.name.toUpperCase() %></h6>
+                    <p><em>by</em> <%= campground.author.username%></p>
+                    <h6><%= campground.price%> <i class="fas fa-rupee-sign"></i></h6>
+                    <p><i class="fas fa-map-marked-alt"></i> <%= campground.address.district%>, <%= campground.address.state%></p>
+                    <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p>
                 </div>
             </div>
             </a>

@@ -1,5 +1,14 @@
+body{
+  margin-top: 4rem;
+}
+nav{
+  background-color: #110e0e;
+}
+
+
 #jumbotron{
     text-align: center;
+    padding: .5rem;
 }
 @media only screen and (min-width: 600px){
     #search-btn{
@@ -47,3 +56,20 @@
         padding-bottom: 0;
         margin: 1rem;
     }
+
+#card-body{
+  padding-top: 0.5rem;
+  padding-bottom: 0;
+  margin-bottom: .5rem;
+}
+
+#card-body h6{
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+#card-body p{
+  margin: 0;
+  font-size: 0.8rem;
+  padding-bottom: 0.5rem;
+}
