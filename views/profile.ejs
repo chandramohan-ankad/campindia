@@ -32,10 +32,10 @@
                 </div>
             <% } %>
             <hr>
-            <% if(currentuser && currentuser.userType === "owner"){ %>
+            <% if(user.userType === "owner"){ %>
                     <h4 class="text-center">Owned / Associated Campgrounds</h4>
             <% } %>   
-            <% if(currentuser && currentuser.isAdmin){ %>
+            <% if(user.isAdmin){ %>
                 <h4 class="text-center">Camp India associated Campgrounds</h4>
             <% } %>
                     <div class="row" style="display:flex; flex-wrap: wrap;">
