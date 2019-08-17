@@ -23,12 +23,11 @@
             <input class="btn btn-secondary addService" type="button" value="Add More Services"  id="addService"><br>
             <p>Maximum 5 Services can be added</p>
         </div>
-        <div class="form-group">
-            <div class="custom-file">
-            <input type="file" id="image" name="image" accept="image/*" class="custom-file-input" id="inputGroupFile02" required>
-            <label class="custom-file-label" for="inputGroupFile02">Choose image</label>
-            </div>
+        <div class="form-group">   
+            <label class="btn btn-secondary custom-file-upload" for="file-upload">Choose Image *</label> 
+            <input style="display:none" type="file" name="image" accept="image/*" id="file-upload" required>
         </div>
+        
         <div class="form-group">
             <textarea name="campground[description]" placeholder="Description" class="form-control" required id="" cols="30" rows="5"></textarea>
         </div>
@@ -51,7 +50,7 @@
             <select class="custom-select" name="address[district]" id="district" size="1"> 
                 <option value="" selected="selected">Please select State first</option>
             </select>
-            </div>
+            </div>  
             </div>
             <input type="text" name="address[address1]" placeholder="Address1" class="form-control" required>
             <input type="text" name="address[city]" placeholder="City" class="form-control" required>
@@ -63,11 +62,11 @@
         <div class="form-group">
             <input type="text" name="campground[contactNumber]" placeholder="Contact Number" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-dark btn-lg" style="width: 100%; margin: 0 auto;">Submit</button>
+        <button type="submit" class="btn btn-dark btn-lg btn-block">Submit</button>
       </form>
     
             <hr>
-        <a class="btn btn-info btn-lg" href="/campgrounds">Cancle</a>
+        <a class="btn btn-info btn-block" href="/campgrounds">Cancle</a>
     </div>
 </div>
     

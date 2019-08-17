@@ -1,13 +1,14 @@
 <% include partials/header%>
 <div class="container">
     <div class="row">
-        <div class="col-md-12 comments">
-                <div>
+        <div class="col-md-8" id="form">
+            <br>
+                    <p><strong><span style="margin-right: 1rem"><i class="fas fa-user"></i></span><%= comment.author.username%></strong></p>
                     <form action="/campgrounds/<%=campground_id%>/comment/<%=comment._id%>?_method=PUT" method="POST" class="form-group d-flex">
                         <input type="text" name="comment[text]" value="<%=comment.text%>" class="form-control">
-                        <button type="submit" class="btn btn-sm btn-primary ml-auto">post</button><a href="/campgrounds/<%=campground_id%>">cancle</a>
+                        <button type="submit" class="btn btn-sm btn-primary ml-auto">post</button>
                     </form>
-                </div>
+                    <a style="text-decoration: none" href="/campgrounds/<%=campground_id%>">cancle</a>
         </div>
     </div>
 </div>

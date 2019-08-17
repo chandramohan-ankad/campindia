@@ -4,6 +4,9 @@
             <h4><%= user.firstName[0].toUpperCase() + user.firstName.slice(1) +" "+ user.lastName[0].toUpperCase() + user.lastName.slice(1)%></h4>
             <%if((currentuser && user._id.equals(currentuser._id)) || currentuser && currentuser.isAdmin){%>
             <a class="ml-auto" href="/user/<%=user._id%>/edit"><span style="color: black; font-size: 1.5rem;"><i class="fas fa-user-edit"></i></span></i></a>
+            <form action="/user/<%=user._id%>?_method=DELETE" method="POST">
+                <button style="border: none; background-color: white; font-size: 1.5rem; color: red; margin-left: 1rem"><i class="fas fa-trash-alt"></i></button>
+            </form>
             <%}%>
     </div>
         
@@ -16,19 +19,12 @@
                 <li class="list-group-item">Contact Us: <br><i class="fas fa-phone-square"></i> <%=user.contactNumber%> <br><i class="fas fa-envelope"></i> <a href="mailto:<%= user.email%>"><%= user.email%></a></li>
                 <li class="list-group-item"><i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></li>
             </div>
-            <%if((currentuser && user._id.equals(currentuser._id)) || currentuser && currentuser.isAdmin){%>
-            <div>
-                <form action="/user/<%=user._id%>?_method=DELETE" method="POST">
-                    <button style="border: none; background-color: white; font-size: 1.5rem"><i class="fas fa-trash"></i></button>
-                </form>
-            </div>
-            <%}%>
         </div>
         
         <div class="col-md-12 camp">
             <% if((currentuser && currentuser.userType === "owner") || currentuser && currentuser.isAdmin){ %> 
                 <div id="newCamp">
-                    <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
+                    <a class="btn btn-info btn-lg" href="/campgrounds/new">Add New Campground</a>
                 </div>
             <% } %>
             <hr>

@@ -1,56 +1,29 @@
 <% include partials/header%>
 <div class="container">
-    <div class="row" style="display:flex; flex-wrap: wrap;">
         <div class="col-md-12">
             <div class="d-flex flex-wrap">
             <h4><%=campground.name.toUpperCase() %></h4>
             <% if(currentuser && campground.author.id.equals(currentuser._id) || currentuser && currentuser.isAdmin){ %>
                 <a class="ml-auto" href="/campgrounds/<%=campground._id%>/edit"><span style="color:black; font-size: 1.5rem"><i class="fas fa-edit"></i></span></a>
+                <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="post">
+                    <button style="border: none; background-color:white; font-size: 1.5rem; color: red; margin-left: 1rem"><i class="fas fa-trash-alt"></i></button>
+                </form>
             <%}%>
         </div>
         </div>
-        <div class="col-md-8 camp ">
-            <figure class="=figure">
-                <img class="figure-img img-fluid rounded" src="<%=campground.image%>" alt="">
-                <figcaption class="figure-caption">
-                    <p ><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p>
-                    <p><%=campground.description%></p>
-                    <% if(currentuser && campground.author.id.equals(currentuser._id) || currentuser && currentuser.isAdmin){ %>
-                    <div class="d-flex flex-wrap">
-                        
-                        <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="post">
-                            <button style="border: none; background-color:white; font-size: 1.5rem"><i class="fas fa-trash-alt"></i></button>
-                        </form>
-                    </div>
-                    <%}%>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="col-md-4">
-            <div class="list-group">
-                <li class="list-group-item"><em> <strong>Owner/ service provider :</strong><br><strong><a style="text-decoration: none" href="/user/<%=campground.author.id%>"><%=user.firstName[0].toUpperCase() + user.firstName.slice(1) +" "+ user.lastName[0].toUpperCase() + user.lastName.slice(1)%></a></strong></em></li>
-                <li class="list-group-item"><strong>Address:</strong><br><%=campground.address.address1%>, <%=campground.address.city%>, <%=campground.address.district%>, <%=campground.address.state%>, <%=campground.address.postalCode%> <br>Click<a style="text-decoration: none" href="<%=campground.addressUrl%>" target="_blank" rel="noopener noreferrer"> here</a> to view on <i class="fas fa-map-marked-alt"></i></li>
-                <li class="list-group-item"><strong>Price/Day : <%= campground.price%></strong> <span style="font-size: inherit"><i class="fas fa-rupee-sign"></i></span>  <br>Check in : 12:00 pm <br>Check out : 11:00 am <br>Contact service provider for early check in</li>
-                <li class="list-group-item"><strong>Activities :</strong>
-                    <ul id="activities">
-                        <% for (let i = 0; i<campground.activities.length; i++) { %>
-                            <li><%=campground.activities[i].toLowerCase()%></li>
-                        <%}%>
-                    </ul> 
-                </li>
-                <li class="list-group-item"><strong>Services :</strong>
-                    <ul id="services">
-                        <% for (let i = 0; i<campground.services.length; i++) { %>
-                            <li><%=campground.services[i].toLowerCase()%></li>
-                        <%}%>
-                    </ul>
-                </li>
-                <li class="list-group-item"><a style="text-decoration: none" href=""><strong>book now</strong></a></li>
-                <li class="list-group-item"><strong>Contact Us:</strong><br><%=campground.contactNumber%> <br><a style="text-decoration: none" href="mailto:<%=user.email%>"><%=user.email%></a></li>
-                
-            </div>   
-        </div>
-        <div class="col-md-8 comments">
+        <div class="row">
+                <div class="col-md-8 camp ">
+                        <figure class="=figure">
+                            <img class="figure-img img-fluid rounded" src="<%=campground.image%>" alt="">
+                            <figcaption class="figure-caption">
+                                <p ><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p>
+                                <p><%=campground.description%></p>
+                                <% if(currentuser && campground.author.id.equals(currentuser._id) || currentuser && currentuser.isAdmin){ %>
+                                <%}%>
+                            </figcaption>
+                        </figure>
+                    
+        
             <hr>
             <div>
                 <form action="/campgrounds/<%=campground._id%>/comment" method="POST" class="d-flex">
@@ -63,18 +36,18 @@
                 <% var i = 0; %>
                 <% campground.comments.forEach(function(comment){ %>
                     
-                        <p><strong><%= comment.author.username%></strong></p>
+                        <p><span style="margin-right: 1rem"><i class="fas fa-user"></i></span><strong><%= comment.author.username%></strong></p>
                           
                     <div class="d-flex" >
                         <p class=""><%= comment.text%></p> 
-                        <p class="ml-auto" id="parent<%= +i%>"></p>
+                        <p style="margin-right: 0.5rem" class="ml-auto" id="parent<%= +i%>"></p>
                         <div class="d-flex">
                                 <% if(currentuser && comment.author.id.equals(currentuser._id)){ %>
-                                    <a class="ml-auto" href="/campgrounds/<%=campground._id%>/comment/<%=comment._id%>/edit"><span style="color: black; padding-left: 0.5rem"> <i class="fas fa-pen"></i></span></a>
+                                    <a class="ml-auto" href="/campgrounds/<%=campground._id%>/comment/<%=comment._id%>/edit"><span style="color: black; margin-left: 0.5rem; margin-right: 0.5rem"> <i class="fas fa-pen"></i></span></a>
                                     <%}%>
                                     <% if(currentuser && comment.author.id.equals(currentuser._id)|| currentuser && currentuser.isAdmin){ %>
                                     <form class="flex-item" action="/campgrounds/<%=campground._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST">
-                                        <button class="ml-auto" style="border: none; background-color:white; padding-left: 0.5rem"> <i class="fas fa-trash-alt"></i></button>
+                                        <button class="ml-auto" style="border: none; background-color:white; color: red; margin-left: 1rem"> <i class="fas fa-trash-alt"></i></button>
                                     </form>  
                                     <%}%>
                         </div>
@@ -124,6 +97,52 @@
                 <%});%>
             </div>           
         </div>
+        
+        <div class="col-md-4">
+            <div class="list-group">
+                <li class="list-group-item"><em> <strong>Owner/ service provider :</strong><br><strong><a style="text-decoration: none" href="/user/<%=campground.author.id%>"><%=user.firstName[0].toUpperCase() + user.firstName.slice(1) +" "+ user.lastName[0].toUpperCase() + user.lastName.slice(1)%></a></strong></em></li>
+                <li class="list-group-item"><strong>Address:</strong><br><%=campground.address.address1%>, <%=campground.address.city%>, <%=campground.address.district%>, <%=campground.address.state%>, <%=campground.address.postalCode%> <br>Click<a style="text-decoration: none" href="<%=campground.addressUrl%>" target="_blank" rel="noopener noreferrer"> here</a> to view on <i class="fas fa-map-marked-alt"></i></li>
+                <li class="list-group-item"><strong>Price/Day : </strong> <span style="font-size: inherit"><i class="fas fa-rupee-sign"></i></span>  <%= campground.price%><br>Check in : 12:00 pm <br>Check out : 11:00 am <br>Contact service provider for early check in</li>
+                <li class="list-group-item"><strong>Activities :</strong>
+                    <ul id="activities">
+                        <% for (let i = 0; i<campground.activities.length; i++) { %>
+                            <li><%=campground.activities[i].toLowerCase()%></li>
+                        <%}%>
+                    </ul> 
+                </li>
+                <li class="list-group-item"><strong>Services :</strong>
+                    <ul id="services">
+                        <% for (let i = 0; i<campground.services.length; i++) { %>
+                            <li><%=campground.services[i].toLowerCase()%></li>
+                        <%}%>
+                    </ul>
+                </li>
+                <li class="list-group-item"><a style="text-decoration: none" href=""><strong>book now</strong></a></li>
+                <li class="list-group-item"><strong>Contact Us:</strong><br><%=campground.contactNumber%> <br><a style="text-decoration: none" href="mailto:<%=user.email%>"><%=user.email%></a></li>
+                
+            </div>   
+        </div>
+        </div>
+        <br>
+        <h4 style="text-align: center; color:red"> Other campgrounds in <%=campground.address.state%> </h4>
+        <hr>
+        <div class="row d-flex flex-wrap">
+                <% campgrounds.forEach(function(campground){ %>
+                    <div class="col-md-3 col-sm-6">
+                        <a style="text-decoration:none; color:black" href="/campgrounds/<%=campground._id%>">
+                        <div class="card" id="card" style="width: inherit;">
+                            <img class="card-img-top" src="<%= campground.image %>" alt="Campground image">
+                            <div class="card-body" id="card-body">
+                                <h6 class="noHover"><%= campground.name.toUpperCase() %></h6>
+                                <p><em>by</em> <%= campground.author.username%></p>
+                                <h6><%= campground.price%> <i class="fas fa-rupee-sign"></i></h6>
+                                <p><i class="fas fa-map-marked-alt"></i> <%= campground.address.district%>, <%= campground.address.state%></p>
+                                <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    <% }) %>
+        </div>
     </div>
-</div>
 <% include partials/footer%>
