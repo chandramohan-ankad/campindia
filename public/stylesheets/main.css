@@ -18,7 +18,7 @@ body {
 }
 
 #jumbotrontext {
-	margin-top: 7rem;
+	margin-top: 20vh;
 }
 @media only screen and (min-width: 600px) {
 	#search-btn {
