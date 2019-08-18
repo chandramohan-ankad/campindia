@@ -38,7 +38,7 @@
                     <% campgrounds.forEach(function(campground){ %>
                     <div class="col-md-3 col-sm-6">
                         <a style="text-decoration:none; color:black" href="/campgrounds/<%=campground._id%>">
-                        <div class="card" style="width: inherit;">
+                        <div class="card" id="card" style="width: inherit;">
                             <img class="card-img-top" src="<%= campground.image %>" alt="Campground image">
                             <div class="card-body" id="card-body">
                                 <h6 class="noHover"><%= campground.name.toUpperCase() %></h6>
