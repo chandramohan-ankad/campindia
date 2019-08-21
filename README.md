@@ -1,15 +1,29 @@
 # Camp India
+![Screen Shot](https://raw.githubusercontent.com/chandramohan-ankad/campindia/master/public/slideshow/Screenshot1.jpg)
+![Screen Shot](https://raw.githubusercontent.com/chandramohan-ankad/campindia/master/public/slideshow/Screenshot2.jpg)
 ## Summary
-Camp India is a RESTful Web-app. I built this app to gain more experience in MEN stack.
-
-### This website is not intended for public use.
-
-Camp India allows you to :
-
+Camp India is a Web app and its built on NodeJS. 
+Camp India allow users to:
 - Search for Campgrounds by city/district/state
 - Sign up with an email address
+- Login / Logout
 - Post Campgrounds
 - Comment on Campgrounds
+
+### App Link : http://campindia.herokuapp.com/
+
+## Stack and Features
+
+### stack : NodeJS, Express, MongoDB
+
+### Features
+
+- RestFull routing 
+- Authentication
+- Authorization
+- Image storage
+- Database hosting
+- Responsive Design 
 
 ## Technologies
 - JavaScript
@@ -22,8 +36,6 @@ Camp India allows you to :
 - Cloudinary (Image Storage)
 - Heroku (Deployment)
 
-You can play around with the app [Here](http://campindia.herokuapp.com/). Feel free to create an account and experiment.
+## Note
+This is the first web app I made. This app is a learning exercise; it wasn't intended for public use. I'd appreciate your feedback!
 
-![Screen Shot](https://raw.githubusercontent.com/chandramohan-ankad/campindia/master/public/slideshow/Screenshot1.jpg)
-![Screen Shot](https://raw.githubusercontent.com/chandramohan-ankad/campindia/master/public/slideshow/Screenshot2.jpg)
- 
