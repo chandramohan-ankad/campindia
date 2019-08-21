@@ -2,8 +2,7 @@
 ![Screen Shot](https://raw.githubusercontent.com/chandramohan-ankad/campindia/master/public/slideshow/Screenshot1.jpg)
 ![Screen Shot](https://raw.githubusercontent.com/chandramohan-ankad/campindia/master/public/slideshow/Screenshot2.jpg)
 ## Summary
-Camp India is a Web app and its built on NodeJS. 
-Camp India allow users to:
+Camp India is a Web app that  allows users to
 - Search for Campgrounds by city/district/state
 - Sign up with an email address
 - Login / Logout
